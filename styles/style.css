@@ -19,8 +19,17 @@ html
 
 .btn-menu
 {
-    padding-top: 5px;
+    background-color: burlywood;
+    margin-top: 8px;
     padding: 12px 10px;
+    border: none;
+    border-radius: 10%;
+}
+
+.btn-menu a
+{
+    text-decoration: none;
+    color: black;
 }
 
 main
@@ -39,7 +48,7 @@ main
 .container-quadbike img
 {
 
-    padding-bottom: 35px;
+    padding-top: 16px;
     width: 40%;
     min-width: 250px;
 }
