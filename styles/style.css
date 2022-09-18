@@ -19,7 +19,8 @@ html
 
 .btn-menu
 {
-    background-color: burlywood;
+    background-color: rgb(20, 78, 80);
+    
     margin-top: 8px;
     padding: 12px 10px;
     border: none;
@@ -29,12 +30,70 @@ html
 .btn-menu a
 {
     text-decoration: none;
-    color: black;
+    color: white;
+    font-size: 1.5rem;
 }
 
 main
 {
     width: 100%;
+}
+
+.main-form
+{
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.main-form ul
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 200, 126);
+    border-radius: 6px;
+    border-style: dashed;
+    border-color: rgb(20, 78, 80);
+    
+}
+
+.main-form ul li
+{
+    padding: 6px 0px;
+    
+    list-style: none;
+}
+
+.main-form .label-form
+{
+    
+    
+}
+
+.main-form .input-form
+{
+    margin: 4px 0px;
+    padding: 5px 5px;
+    background-color: white;
+    border: none;
+    border-radius: 3px;
+}
+
+.container-btn
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.container-btn button
+{
+    padding: 4px 4px;
+    margin: 4px 6px;
 }
 
 .container-quadbike
