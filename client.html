@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="Challenge 2">
         <title>Quadbike</title>
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="./styles/style.css"> 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="./styles/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap" rel="stylesheet"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
     <body>
     <header>
@@ -28,47 +29,47 @@
         </section>
     </header>
     <main>
-        <form action="" class="main-form">
+        <div class="main-form">
             <ul>
                 <li>
-                    <label for="id" class="label-form">ID</label>
+                    <label for="idClient" class="label-form">ID</label>
                     <br>
-                    <input id="id" type="text"  class="input-form" placeholder="1">
+                    <input id="idClient" type="text"  class="input-form" placeholder="1">
                 </li>
                 <li>
-                    <label for="name" class="label-form">Nombre</label>
+                    <label for="nameClient" class="label-form">Nombre</label>
                     <br>
-                    <input id="name" type="text" class="input-form" placeholder="Ernesto Perez">
+                    <input id="nameClient" type="text" class="input-form" placeholder="Ernesto Perez">
                 </li>
                 <li>
-                    <label for="email" class="label-form">Email</label>
+                    <label for="emailClient" class="label-form">Email</label>
                     <br>
-                    <input id="email" type="text" class="input-form" placeholder="ernestopez1296@gmail.com">
+                    <input id="emailClient" type="text" class="input-form" placeholder="ernestopez1296@gmail.com">
                 </li>
                 <li>
-                    <label for="age" class="label-form">Edad</label>
+                    <label for="ageClient" class="label-form">Edad</label>
                     <br>
-                    <input id="age" type="text" class="input-form" placeholder="24">
+                    <input id="ageClient" type="text" class="input-form" placeholder="24">
                 </li>
                 <section class="container-btn">
                     <li>
-                        <button onclick="" class="btn-visualize">Visualizar</button>
+                        <button onclick="getClients()" class="btn-visualize">Visualizar</button>
                     </li>
                     <li>
-                        <button onclick="" class="btn-register">Registrar</button>
+                        <button onclick="saveClient()" class="btn-register">Registrar</button>
                     </li>
                     <li>
-                        <button onclick="" class="btn-update">Actualizar</button>
+                        <button onclick="updateClient()" class="btn-update">Actualizar</button>
                     </li>
                 </section>      
             </ul>  
-        </form>
+        </div>
     </main>
     <footer>
-        <section class="footer__show-results">
-            <p id="result_01"></p>
+        <section class="show-results">
+           <div class="list" id="list"></div>
         </section>
     </footer>
-
+        <script type="text/javascript" src="./scripts/client.js"></script>
     </body>
 </html>

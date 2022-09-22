@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./styles/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
     <body>
     <header>
@@ -28,22 +29,22 @@
         </section>
     </header>
     <main>
-        <form action="" class="main-form">
+        <div class="main-form">
             <ul>
                 <li>
-                    <label for="id" class="label-form">ID</label>
+                    <label for="idQuadbike" class="label-form">ID</label>
                     <br>
-                    <input id="id" type="text" class="input-form" placeholder="1">
+                    <input id="idQuadbike" type="text" class="input-form" placeholder="1">
                 </li>
                 <li>
-                    <label for="brand" class="label-form">Marca</label>
+                    <label for="brandQuadbike" class="label-form">Marca</label>
                     <br>
-                    <input id="brand" type="text" class="input-form" placeholder="Honda">
+                    <input id="brandQuadbike" type="text" class="input-form" placeholder="Honda">
                 </li>
                 <li>
-                    <label for="model" class="label-form">Modelo</label>
+                    <label for="modelQuadbike" class="label-form">Modelo</label>
                     <br>
-                    <input id="model" type="text" class="input-form" placeholder="zs-2376">
+                    <input id="modelQuadbike" type="text" class="input-form" placeholder="zs-2376">
                 </li>
                 <li>
                     <label for="category_id" class="label-form">Categoria ID</label>
@@ -51,36 +52,34 @@
                     <input id="category_id" type="text" class="input-form" placeholder="3">
                 </li>
                 <li>
-                    <label for="name" class="label-form">Nombre</label>
+                    <label for="nameQuadbike" class="label-form">Nombre</label>
                     <br>
-                    <input id="name" type="text" class="input-form" placeholder="">
+                    <input id="nameQuadbike" type="text" class="input-form" placeholder="">
                 </li>
                 <section class="container-btn">
                     <li>
-                        <button onclick="" class="btn-visualize">Visualizar</button>
+                        <button onclick="getQuadbikes()" class="btn-visualize">Visualizar</button>
                     </li>
                     <li>
-                        <button onclick="" class="btn-register">Registrar</button>
+                        <button onclick="saveQuadbike()" class="btn-register">Registrar</button>
                     </li>
                     <li>
-                        <button onclick="" class="btn-update">Actualizar</button>
+                        <button onclick="updateQuadbike()" class="btn-update">Actualizar</button>
                     </li>
-                    <li>
+                    <!-- <li>
                         <button onclick="" class="btn-erase">Borrar</button>
-                    </li>
+                    </li> -->
                 </section>
             </ul>
             
-        </form>
+        </div>
     </main>
     <footer>
 
     </footer>
-        <section class="footer__show-results">
-            
-            <div id="response"></div>
+        <section class="show-results">
+            <div class="list" id="listQuadbike"></div>
         </section>
-        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script> 
         <script src="./scripts/quadbike.js"></script>
     </body>
 </html>

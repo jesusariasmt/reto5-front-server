@@ -141,3 +141,10 @@ main
     width: 40%;
     min-width: 250px;
 }
+
+.show-results
+{
+    display: flex;
+    justify-content: center;
+    text-justify: auto;
+}
