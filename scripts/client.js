@@ -101,7 +101,7 @@ function deleteClient(idClient){
 			console.log("El cliente se ha borrado correctamente");
 	    },
 	    error : function(xhr, status) {
-	       alert('Ha ocurrido un priblema al borrar el cliente');
+	       alert('Ha ocurrido un problema al borrar el cliente');
 	    },
 	    complete: function(){
 	    	getClients();

@@ -82,7 +82,7 @@ function updateQuadbike(){
 	 
 	    },
 	    error : function(xhr, status) {
-	       alert('Ha ocurrido un problema al actualizar');
+	       //alert('Ha ocurrido un problema al actualizar');
 	    },
 	    complete: function(){
 	    	getQuadbikes();
