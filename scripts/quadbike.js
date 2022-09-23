@@ -8,7 +8,7 @@ function getQuadbikes(){
 	   		let cs=response.items;
 	   		$("#listQuadbike").empty();
 	   		for(i=0;i<cs.length;i++){
-	   			$("#listQuadbike").append(cs[i].id+" <b>"+cs[i].brand+"</b> "+cs[i].model+" "+cs[i].category_id+"<b>"+" "+cs[i].name);
+	   			$("#listQuadbike").append(cs[i].id+" <b>"+cs[i].brand+"</b> "+cs[i].model+" "+cs[i].category_id+"<b>"+" "+cs[i].name + " ");
 	   			$("#listQuadbike").append("<button onclick='deleteQuadbike("+cs[i].id+")'>Borrar</button><br> </br>");
 	   		}
 	    },

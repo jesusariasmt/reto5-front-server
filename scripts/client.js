@@ -8,7 +8,7 @@ function getClients(){
 	   		let cs=response.items;
 	   		$("#list").empty();
 	   		for(i=0;i<cs.length;i++){
-	   			$("#list").append(cs[i].id+" <b>"+cs[i].name+"</b> "+cs[i].email+" "+cs[i].age);
+	   			$("#list").append(cs[i].id+" <b>"+cs[i].name+"</b> "+cs[i].email+" "+cs[i].age + " ");
 	   			$("#list").append("<button onclick='deleteClient("+cs[i].id+")'>Borrar</button></br> </br>");
 	   		}
 	    },
