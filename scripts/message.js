@@ -10,7 +10,7 @@ function getMessages(){
                    $("#list").empty();
                    for(i=0;i<cs.length;i++){
                        $("#list").append(cs[i].id+" <b>"+cs[i].messagetext+"</b> ");
-                       $("#list").append("<button onclick='deleteMessage("+cs[i].id+")'>Borrar</button><br>");
+                       $("#list").append("<button onclick='deleteMessage("+cs[i].id+")'>Borrar</button><br> </br>");
                    }
             },
             error : function(xhr, status) {

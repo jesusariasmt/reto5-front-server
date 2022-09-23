@@ -21,7 +21,6 @@ html
 .btn-menu
 {
     background-color: rgb(20, 78, 80);
-    
     margin-top: 8px;
     padding: 12px 10px;
     border: none;
@@ -61,6 +60,7 @@ main
     font-size: 1.5rem;
     font-weight: 500;
     min-width: 260px;
+    margin-top: -20px;
 }
 
 .main-form ul li
@@ -90,7 +90,6 @@ main
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    
 }
 
 .container-btn button
@@ -102,8 +101,13 @@ main
     border-radius: 4px;
     background-color: rgb(20, 78, 80);
     color: white;
-    font-weight: 600;
-   
+    font-weight: 600;  
+}
+
+button:hover
+{
+    cursor: pointer;
+    background-color: rgb(59, 167, 59);
 }
 
 .container-btn .btn-visualize
@@ -136,7 +140,6 @@ main
 
 .container-quadbike img
 {
-
     padding-top: 16px;
     width: 40%;
     min-width: 250px;
@@ -146,5 +149,16 @@ main
 {
     display: flex;
     justify-content: center;
-    text-justify: auto;
+    background-color: lightgreen;
+    width: 30%;
+    margin: 0 auto;
+    min-width: 300px;
+    min-height: 150px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 2.5px dashed rgb(20, 78, 80);
+    margin-bottom: 8px;
+    
 }
+
+

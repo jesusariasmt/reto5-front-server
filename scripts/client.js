@@ -9,7 +9,7 @@ function getClients(){
 	   		$("#list").empty();
 	   		for(i=0;i<cs.length;i++){
 	   			$("#list").append(cs[i].id+" <b>"+cs[i].name+"</b> "+cs[i].email+" "+cs[i].age);
-	   			$("#list").append("<button onclick='deleteClient("+cs[i].id+")'>Borrar</button><br>");
+	   			$("#list").append("<button onclick='deleteClient("+cs[i].id+")'>Borrar</button></br> </br>");
 	   		}
 	    },
 	    error : function(xhr, status) {
