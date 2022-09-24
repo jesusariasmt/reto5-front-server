@@ -18,9 +18,32 @@ function getClients(){
 	});
 }
 
+// function paintDate(datos)
+// {
+// 	let htmlInsert = ""
+// 	htmlInsert += "<tr>";
+// 	Object.keys(datos[0]).forEach(titulo => htmlInsert += "<th>"+titulo+ "<th>");
+// 	htmlInsert += "</tr>";
+
+// 	for(let i=0; i <datos.length; i++)
+// 	{
+// 		htmlInse += "<tr>";
+// 		Object.values(datos[i]).forEach(dato => htmlInsert += "<td>"+dato+ "<td>");
+
+// 		htmlInsert += "</tr>";
+// 	}
+
+// 	$("#resultado").empty();
+// 	$("#resultado").append(htmlInsert)
+
+// }
+
+
 function getId(){
+	let id=$("#idClient").val();
+	
 	$.ajax({
-	    url : '  https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client/:id',
+	    url : '  https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client/' +  id,
 	    type : 'GET',
 		dataType: 'json',
 		contentType:'application/json',
@@ -61,7 +84,7 @@ function saveClient() {
 	    data:dataToSend,
 	    contentType:'application/json',
 	    success : function(response) {
-	
+			
 	    },
 	    error : function(xhr, status) {
 	        //alert('Ha ocurrido un problema al guardar el cliente');

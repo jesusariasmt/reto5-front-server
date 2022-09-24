@@ -18,6 +18,28 @@ function getQuadbikes(){
 	});
 }
 
+function getId(){
+	let id=$("#idQuadbike").val();
+	
+	$.ajax({
+	    url : ' https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/quadbike/quadbike/' +  id,
+	    type : 'GET',
+		dataType: 'json',
+		contentType:'application/json',
+	    success : function(response) {
+	   		let cs=response.items;
+	   		$("#list").empty();
+	   		for(i=0;i<cs.length;i++){
+	   			$("#listQuadbike").append(cs[i].id+" <b>"+cs[i].brand+"</b> "+cs[i].model+" "+cs[i].category_id+"<b>"+" "+cs[i].name + " ");
+	   			$("#listQuadbike").append("<button onclick='deleteClient("+cs[i].id+")'>Borrar</button></br> </br>");
+	   		}
+	    },
+	    error : function(xhr, status) {
+	      //alert("Ha ocurrido un problema al mostrar los clientes");
+	    }
+	});
+}
+
 
 function saveQuadbike() {
 	let idQuadbike=$("#idQuadbike").val();
