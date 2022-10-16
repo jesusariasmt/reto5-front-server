@@ -25,6 +25,12 @@
                 <button class="btn-menu">
                     <a href="./message.html">Mensajes</a>
                 </button>
+                <button class="btn-menu">
+                    <a href="./category.html">Categorias</a>
+                </button>
+                <button class="btn-menu">
+                    <a href="./report.html">Reportes</a>
+                </button>
             </nav>
         </section>
     </header>
@@ -32,29 +38,35 @@
         <div class="main-form">
             <ul>
                 <li>
-                    <label for="idQuadbike" class="label-form">ID</label>
+                    <label hidden for="idQuadbike" class="label-form">ID</label>
                     <br>
-                    <input id="idQuadbike" type="text" class="input-form" placeholder="1">
+                    <input hidden id="idQuadbike" type="text" class="input-form" placeholder="1">
                 </li>
                 <li>
-                    <label for="brandQuadbike" class="label-form">Marca</label>
+                    <label for="name" class="label-form">Nombre</label>
                     <br>
-                    <input id="brandQuadbike" type="text" class="input-form" placeholder="Honda">
+                    <input id="name" type="text" class="input-form" placeholder="">
                 </li>
                 <li>
-                    <label for="modelQuadbike" class="label-form">Modelo</label>
+                    <label for="brand" class="label-form">Marca</label>
                     <br>
-                    <input id="modelQuadbike" type="text" class="input-form" placeholder="200">
+                    <input id="brand" type="text" class="input-form" placeholder="Honda">
+                </li>
+             
+                <li>
+                    <label for="year" class="label-form">Año</label>
+                    <br>
+                    <input id="year" type="text" class="input-form" placeholder="2022">
                 </li>
                 <li>
-                    <label for="category_id" class="label-form">Categoria ID</label>
+                    <label for="description" class="label-form">Descripción</label>
                     <br>
-                    <input id="category_id" type="text" class="input-form" placeholder="3">
+                    <input id="description" type="text" class="input-form" placeholder="">
                 </li>
+                
+                
                 <li>
-                    <label for="nameQuadbike" class="label-form">Nombre</label>
-                    <br>
-                    <input id="nameQuadbike" type="text" class="input-form" placeholder="">
+                    <select id="select-category"></select>
                 </li>
                 <section class="container-btn">
                     <li>
@@ -66,20 +78,29 @@
                     <li>
                         <button onclick="updateQuadbike()" class="btn-update">Actualizar</button>
                     </li>
-                    <li>
+                    <!-- <li>
                         <button onclick="getId()" class="btn-id">Visualizar ID</button>
-                    </li>
+                    </li> -->
                 </section>
             </ul>
             
         </div>
     </main>
     <footer>
-
-    </footer>
+        <!-- <table>
+            <thead>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>          
+              </tr>
+            </thead>
+            <tbody id="list"></tbody>
+          </table> -->
         <section class="show-results">
-            <div class="list" id="listQuadbike"></div>
+            <div class="list" id="list"></div>
         </section>
+    </footer>
         <script src="./scripts/quadbike.js"></script>
     </body>
 </html>

@@ -9,12 +9,13 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="./styles/style.css">   
+        <link rel="stylesheet" href="./styles/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
     <body>
     <header>
         <section>
-            <nav class="header-menu">
+            <nav class="header-menu" >
                 <button class="btn-menu">
                     <a href="./quadbike.html">Cuatrimotos</a>
                 </button>
@@ -34,13 +35,37 @@
         </section>
     </header>
     <main>
-        <figure class="container-quadbike">
-            <img src="./assets/52c4b77.png" alt="quadbike">
-        </figure>
+        <div class="main-form">
+            <ul>
+                <section class="container-btn">
+                    <li>
+                        <button onclick="reportStatus()" class="btn-visualize">Reporte Status</button>
+                    </li>
+                    <li>
+                        <button onclick="reportDate()" class="btn-register">Reporte Fechas</button>
+                    </li>
+                    <li>
+                        <button onclick="reportClients()" class="btn-id">Reporte Clientes</button>
+                    </li>
+                </section>
+            </ul>  
+        </div>        
     </main>
     <footer>
-
+        <h2>Reportes disponibles en la aplicación</h2>
+                <table >
+                  <thead>
+                    <tr>
+                      <td>Id</td>
+                      <td>Fecha de inicio</td>
+                      <td>Fecha de finalización</td>
+                      <td>Estado</td>
+                      <td>Calificación</td>
+                    </tr>
+                  </thead>
+                  <tbody id="list"></tbody>
+                </table>
     </footer>
-
+        <script type="text/javascript" src="./scripts/report.js"></script>
     </body>
 </html>

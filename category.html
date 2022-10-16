@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="Challenge 2">
         <title>Quadbike</title>
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./styles/style.css"> 
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap" rel="stylesheet"> 
         <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap" rel="stylesheet">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+        <link rel="stylesheet" href="./styles/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     </head>
     <body>
     <header>
         <section>
-            <nav class="header-menu">
+            <nav class="header-menu" >
                 <button class="btn-menu">
                     <a href="./quadbike.html">Cuatrimotos</a>
                 </button>
@@ -39,49 +40,39 @@
         <div class="main-form">
             <ul>
                 <li>
-                    <label hidden for="idClient" class="label-form">ID</label>
+                    <label hidden for="idCategory" class="label-form">ID</label>
                     <br>
-                    <input hidden id="idClient" type="text"  class="input-form" placeholder="1">
-                </li>
-                <li>
-                    <label for="email" class="label-form">Email</label>
-                    <br>
-                    <input id="email" type="text" class="input-form" placeholder="ernestopez@prueba">
-                </li>
-                <li>
-                    <label for="password" class="label-form">Contraseña</label>
-                    <br>
-                    <input id="password" type="text" class="input-form" placeholder="*********">
+                    <input hidden id="idCategory" type="text" class="input-form" placeholder="1">
                 </li>
                 <li>
                     <label for="name" class="label-form">Nombre</label>
                     <br>
-                    <input id="name" type="text" class="input-form" placeholder="Ernesto Perez">
+                    <input id="name" type="text" class="input-form input-Category" placeholder=""></input>
                 </li>
                 <li>
-                    <label for="age" class="label-form">Edad</label>
+                    <label for="description" class="label-form">Descripción</label>
                     <br>
-                    <input id="age" type="text" class="input-form" placeholder="24">
+                    <textarea id="description" type="text" class="input-form input-Category" placeholder=""></textarea>
                 </li>
                 <section class="container-btn">
                     <li>
-                        <button onclick="getClients()" class="btn-visualize">Visualizar</button>
+                        <button onclick="getCategorys()" class="btn-visualize">Visualizar</button>
+                    </li>   
+                    <li>
+                        <button onclick="saveCategory()" class="btn-register">Registrar</button>
                     </li>
                     <li>
-                        <button onclick="saveClient()" class="btn-register">Registrar</button>
-                    </li>
-                    <li>
-                        <button onclick="updateClient()" class="btn-update">Actualizar</button>
+                        <button onclick="updateCategory()" class="btn-update">Actualizar</button>
                     </li>
                     <!-- <li>
                         <button onclick="getId()" class="btn-id">Visualizar ID</button>
                     </li> -->
-                </section>      
+                </section>
             </ul>  
-        </div>
+        </div>        
     </main>
     <footer>
-        <!-- <table>
+        <table>
             <thead>
               <tr>
                 <td></td>
@@ -90,12 +81,11 @@
               </tr>
             </thead>
             <tbody id="list"></tbody>
-          </table> -->
-        <section class="show-results">
-           <div class="list" id="list"></div>
-           
-        </section>
+          </table>
+        <!-- <section class="show-results">
+            <div class="list" id="list"></div>
+        </section> -->
     </footer>
-        <script type="text/javascript" src="./scripts/client.js"></script>
+        <script type="text/javascript" src="./scripts/category.js"></script>
     </body>
 </html>

@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./styles/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -25,7 +26,12 @@
                 <button class="btn-menu">
                     <a href="./message.html">Mensajes</a>
                 </button>
-                
+                <button class="btn-menu">
+                    <a href="./category.html">Categorias</a>
+                </button>
+                <button class="btn-menu">
+                    <a href="./report.html">Reportes</a>
+                </button>
             </nav>
         </section>
     </header>
@@ -33,16 +39,20 @@
         <div class="main-form">
             <ul>
                 <li>
-                    <label for="idMessage" class="label-form">ID</label>
+                    <label hidden for="idMessage" class="label-form">ID</label>
                     <br>
-                    <input id="idMessage" type="text" class="input-form" placeholder="1">
+                    <input hidden id="idMessage" type="text" class="input-form" placeholder="1">
                 </li>
                 <li>
-                    <label for="bodyMessage" class="label-form">Mensaje</label>
+                    <label for="messageText" class="label-form">Mensaje</label>
                     <br>
-                    <textarea id="bodyMessage" type="text" class="input-form input-message" placeholder="Que buen servicio"></textarea>
+                    <textarea id="messageText" type="text" class="input-form input-message" placeholder="Que buen servicio"></textarea>
                 </li>
+                <select class="select-main" id="select-quadbike"></select>
+
+                <select class="select-main" id="select-client"></select>
                 <section class="container-btn">
+                   
                     <li>
                         <button onclick="getMessages()" class="btn-visualize">Visualizar</button>
                     </li>   
@@ -52,14 +62,24 @@
                     <li>
                         <button onclick="updateMessage()" class="btn-update">Actualizar</button>
                     </li>
-                    <li>
+                    <!-- <li>
                         <button onclick="getId()" class="btn-id">Visualizar ID</button>
-                    </li>
+                    </li> -->
                 </section>
             </ul>  
         </div>        
     </main>
     <footer>
+        <!-- <table>
+            <thead>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>          
+              </tr>
+            </thead>
+            <tbody id="list"></tbody>
+          </table> -->
         <section class="show-results">
             <div class="list" id="list"></div>
         </section>

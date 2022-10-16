@@ -1,38 +1,22 @@
-function getQuadbikes(){
-	$.ajax({
-	    url : ' https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/quadbike/quadbike',
-	    type : 'GET',
-		dataType: 'json',
-		contentType:'application/json',
-	    success : function(response) {
-	   		let cs=response.items;
-	   		$("#listQuadbike").empty();
-	   		for(i=0;i<cs.length;i++){
-	   			$("#listQuadbike").append(cs[i].id+" <b>"+cs[i].brand+"</b> "+cs[i].model+" "+cs[i].category_id+"<b>"+" "+cs[i].name + " ");
-	   			$("#listQuadbike").append("<button onclick='deleteQuadbike("+cs[i].id+")'>Borrar</button><br> </br>");
-	   		}
-	    },
-	    error : function(xhr, status) {
-	      alert("Ha ocurrido un problema");
-	    }
-	});
-}
+var Global= "http://localhost:8081/api/";
+//var Global = "http://129.151.123.155:8081/api/";
 
-function getId(){
-	let id=$("#idQuadbike").val();
-	
+function getQuadbike(idQuadbike){
+
+	$("#idQuadbike").val(idQuadbike);
+
 	$.ajax({
-	    url : ' https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/quadbike/quadbike/' +  id,
+	    url : Global + 'Quadbike/' +  idQuadbike,
 	    type : 'GET',
-		dataType: 'json',
-		contentType:'application/json',
+			dataType: 'json',
+			contentType:'application/json',
 	    success : function(response) {
-	   		let cs=response.items;
-	   		$("#list").empty();
-	   		for(i=0;i<cs.length;i++){
-	   			$("#listQuadbike").append(cs[i].id+" <b>"+cs[i].brand+"</b> "+cs[i].model+" "+cs[i].category_id+"<b>"+" "+cs[i].name + " ");
-	   			$("#listQuadbike").append("<button onclick='deleteClient("+cs[i].id+")'>Borrar</button></br> </br>");
-	   		}
+	   		let cs=response;
+                $("#name").val(cs.name);
+				$("#brand").val(cs.brand);
+				$("#year").val(cs.year);
+                $("#description").val(cs.description);
+				
 	    },
 	    error : function(xhr, status) {
 	      //alert("Ha ocurrido un problema al mostrar los clientes");
@@ -40,98 +24,124 @@ function getId(){
 	});
 }
 
+function getQuadbikes(){
+    //FUNCION GET
+      $.ajax({
+          url : Global + 'Quadbike/all',
+          type : 'GET',
+          //dataType: 'json',
+          //contentType:'application/json',
+		header: 'Access-Control-Allow-Origin: *',
+          success : function(response) {
+                let cs=response;
+                $("#list").empty();
+                for(i=0;i<cs.length;i++){
+                    $("#list").append(cs[i].id+" <b>"+ cs[i].name +"</b> " + cs[i].brand + " " + cs[i].year + " " +cs[i].description+ " ");
+                    $("#list").append("<button onclick='deleteQuadbike("+cs[i].id+")'>Borrar</button>");
+					$("#list").append("<button onclick='getQuadbike(" +cs[i].id +")'>Actualizar</button><br>");
+                }
+          },
+          error : function(xhr, status) {
+            alert("Ha ocurrido un problema al mostrar las cuatrimotos");
+          }
+      });
+    }
+
 
 function saveQuadbike() {
-	let idQuadbike=$("#idQuadbike").val();
-    let brandQuadbike=$("#brandQuadbike").val();
-    let modelQuadbike=$("#modelQuadbike").val();
-    let category_id=$("#category_id").val();
-    let nameQuadbike=$("#nameQuadbike").val();
+    let nombre=$("#name").val();
+    let marca=$("#brand").val();   
+    let modelo=$("#year").val();
+	let descripcion=$("#description").val();
 
-	let data={
-		id:parseInt(idQuadbike),
-        brand:brandQuadbike,
-        model:parseInt(modelQuadbike),
-        category_id:parseInt(category_id),
-        name:nameQuadbike
-	};
+    let data={
+	    name:nombre,
+        brand:marca,
+        year:parseInt(modelo),
+		description: descripcion
+    };
 
-	let dataToSend=JSON.stringify(data);
-	
-	$.ajax({
-		url : 'https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/quadbike/quadbike',
-		type : 'post',
-		dataType: 'json',
-	    data:dataToSend,
-	    contentType:'application/json',
-	    success : function(response) {
-		
-	    },
-	    error : function(xhr, status) {
-	        //alert('Ha ocurrido un problema');
-	    },
-	    complete: function(){
-	    	getQuadbikes();
-	    }
-	});
+    let dataToSend=JSON.stringify(data);
+    //console.log(dataToSend);
+
+
+    $.ajax({
+        url : Global + 'Quadbike/save',
+        type : 'post',
+        dataType: 'json',
+        data:dataToSend,
+        contentType:'application/json',
+				header: 'Access-Control-Allow-Origin: *',
+        success : function(response) {
+            //console.log("La cuatrimoto se ha guardado correctamente");
+        },
+        error : function(xhr, status) {
+            //console.log('Ha ocurrido un problema al guardar la cuatrimoto');
+        },
+        complete: function(){
+            getQuadbikes();
+        }
+    });
 }
 
 
 function updateQuadbike(){
-	let idQuadbike=$("#idQuadbike").val();
-    let brandQuadbike=$("#brandQuadbike").val();
-    let modelQuadbike=$("#modelQuadbike").val();
-    let category_id=$("#category_id").val();
-    let nameQuadbike=$("#nameQuadbike").val();
+		let id=$("#idQuadbike").val();
+        let nombre=$("#name").val();
+        let marca=$("#brand").val();
+		let modelo=$("#year").val();
+		let descripcion=$("#description").val();
 
-	let data={
-		id:idQuadbike,
-        brand:brandQuadbike,
-        model:modelQuadbike,
-        category_id:category_id,
-        name:nameQuadbike
-	};
-	let dataToSend=JSON.stringify(data);
+		let data={
+			id: id,
+			name:nombre,
+			brand:marca,
+			year:parseInt(modelo),
+			description: descripcion
+		};
 
-	$.ajax({
-	    url : 'https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/quadbike/quadbike',
-	    type : 'PUT',
-	 	dataType : 'json',
-	    data:dataToSend,
-	    contentType:'application/json',
-	    success : function(response) {
-			alert("Se actualizado correctamente");
-	 
-	    },
-	    error : function(xhr, status) {
-	       //alert('Ha ocurrido un problema al actualizar');
-	    },
-	    complete: function(){
-	    	getQuadbikes();
-	    }
-	});
+    let dataToSend=JSON.stringify(data);
+    //console.log(dataToSend);
+    $.ajax({
+        url : Global + 'Quadbike/update',
+        type : 'PUT',
+         dataType : 'json',
+        data:dataToSend,
+        contentType:'application/json',
+        success : function(response) {
+            //console.log("La cuatrimoto se ha actualizado correctamente");
+        },
+        error : function(xhr, status) {
+            //console.log('Ha ocurrido un problema al actualizar la cuatrimoto');
+        },
+        complete: function(){
+            getQuadbikes();
+        }
+    });
+
 }
 
 function deleteQuadbike(idQuadbike){
-	let data={
-		id:idQuadbike
-	};
-	let dataToSend=JSON.stringify(data);
-	
-	$.ajax({
-	    url : '  https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/quadbike/quadbike',
-	    type : 'DELETE',
-	 //   dataType : 'json',
-	    data:dataToSend,
-	    contentType:'application/json',
-	    success : function(response) {
-			console.log("Se ha borrado correctamente");
-	    },
-	    error : function(xhr, status) {
-	       alert('Ha ocurrido un problema al borrar');
-	    },
-	    complete: function(){
-	    	getQuadbikes();
-	    }
-	});
+    let data={
+        id:idQuadbike
+    };
+    let dataToSend=JSON.stringify(data);
+    //console.log(dataToSend);
+    $.ajax({
+        url : Global + 'Quadbike/' + data.id,
+        type : 'DELETE',
+        //dataType : 'json',
+        data:dataToSend,
+        contentType:'application/json',
+        success : function(response) {
+            console.log("La cuatrimoto se ha borrado correctamente");
+        },
+        error : function(xhr, status) {
+           alert('Ha ocurrido un problema al borrar la cuatrimoto');
+        },
+        complete: function(){
+            getQuadbikes();
+        }
+    });
+
 }

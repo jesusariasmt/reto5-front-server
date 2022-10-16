@@ -1,15 +1,45 @@
+var Global= "http://localhost:8081/api/";
+//var Global = "http://129.151.123.155:8081/api/";
+
+function getClient(idClient){
+	$("#idClient").val(idClient);
+
+	let id = idClient;
+
+	$.ajax({
+	    url : Global + 'Client/' +  id,
+	    type : 'GET',
+			//dataType: 'json',
+			//contentType:'application/json',
+	    success : function(response) {
+	   		let cs=response;
+			    $("#email").val(cs.email);
+				$("#password").val(cs.password);
+				$("#name").val(cs.name);
+				$("#age").val(cs.age);
+				
+
+	    },
+	    error : function(xhr, status) {
+	      //alert("Ha ocurrido un problema al mostrar los clientes");
+	    }
+	});
+}
+
 function getClients(){
+//FUNCION GET
 	$.ajax({
-	    url : ' https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+	    url : Global + 'Client/all',
 	    type : 'GET',
-		dataType: 'json',
-		contentType:'application/json',
+		  //dataType: 'json',
+		  //contentType:'application/json',
 	    success : function(response) {
-	   		let cs=response.items;
+	   		let cs=response;
 	   		$("#list").empty();
 	   		for(i=0;i<cs.length;i++){
-	   			$("#list").append(cs[i].id+" <b>"+cs[i].name+"</b> "+cs[i].email+" "+cs[i].age + " ");
-	   			$("#list").append("<button onclick='deleteClient("+cs[i].id+")'>Borrar</button></br> </br>");
+	   			$("#list").append(cs[i].idClient+" <b>"+cs[i].email+"</b> "+cs[i].name+" "+cs[i].age + " ");
+	   			$("#list").append("<button onclick='deleteClient("+cs[i].idClient+")'>Borrar</button>" + " ");
+				$("#list").append("<button onclick='getClient(" +cs[i].idClient +")'>Actualizar</button><br>");
 	   		}
 	    },
 	    error : function(xhr, status) {
@@ -18,73 +48,36 @@ function getClients(){
 	});
 }
 
-// function paintDate(datos)
-// {
-// 	let htmlInsert = ""
-// 	htmlInsert += "<tr>";
-// 	Object.keys(datos[0]).forEach(titulo => htmlInsert += "<th>"+titulo+ "<th>");
-// 	htmlInsert += "</tr>";
-
-// 	for(let i=0; i <datos.length; i++)
-// 	{
-// 		htmlInse += "<tr>";
-// 		Object.values(datos[i]).forEach(dato => htmlInsert += "<td>"+dato+ "<td>");
-
-// 		htmlInsert += "</tr>";
-// 	}
-
-// 	$("#resultado").empty();
-// 	$("#resultado").append(htmlInsert)
-
-// }
-
-
-function getId(){
-	let id=$("#idClient").val();
-	
-	$.ajax({
-	    url : '  https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client/' +  id,
-	    type : 'GET',
-		dataType: 'json',
-		contentType:'application/json',
-	    success : function(response) {
-	   		let cs=response.items;
-	   		$("#list").empty();
-	   		for(i=0;i<cs.length;i++){
-	   			$("#list").append(cs[i].id+" <b>"+cs[i].name+"</b> "+cs[i].email+" "+cs[i].age + " ");
-	   			$("#list").append("<button onclick='deleteClient("+cs[i].id+")'>Borrar</button></br> </br>");
-	   		}
-	    },
-	    error : function(xhr, status) {
-	      //alert("Ha ocurrido un problema al mostrar los clientes");
-	    }
-	});
-}
 
 function saveClient() {
-	let idClient=$("#idClient").val();
-	let name=$("#nameClient").val();
-	let emailClient=$("#emailClient").val();
-	let age=$("#ageClient").val();
+	
+	let mailCliente=$("#email").val();
+	let password=$("#password").val();
+	let nombre=$("#name").val();
+	let edad=$("#age").val();
+	
 
 	let data={
-		id:parseInt(idClient),
-		name:name,
-		email:emailClient,
-		age:parseInt(age)
+		
+		email:mailCliente,
+		password:password,
+		name:nombre,
+		age:parseInt(edad)
 	};
 
 	let dataToSend=JSON.stringify(data);
+	//console.log(dataToSend);
 
 
 	$.ajax({
-		url : ' https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+		url : Global + 'Client/save',
 		type : 'post',
 		dataType: 'json',
 	    data:dataToSend,
 	    contentType:'application/json',
 	    success : function(response) {
-			
+			//alert("El cliente se ha guardado correctamente");
+
 	    },
 	    error : function(xhr, status) {
 	        //alert('Ha ocurrido un problema al guardar el cliente');
@@ -97,26 +90,31 @@ function saveClient() {
 
 
 function updateClient(){
-	let idCliente=$("#idClient").val();
-	let name=$("#nameClient").val();
-	let emailClient=$("#emailClient").val();
-	let ageClient=$("#ageClient").val();
+	let id=$("#idClient").val();
+	let mailCliente=$("#email").val();
+	let password=$("#password").val();
+	let nombre=$("#name").val();
+	let edad=$("#age").val();
+	
+
 	let data={
-		id:idCliente,
-		name:name,
-		email:emailClient,
-		age:ageClient
+		idClient: id,
+		email:mailCliente,
+		password:password,
+		name:nombre,
+		age:parseInt(edad)
 	};
 	let dataToSend=JSON.stringify(data);
-	
+	//console.log(dataToSend);
 	$.ajax({
-	    url : ' https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+	    url : Global + 'Client/update',
 	    type : 'PUT',
-	 	dataType : 'json',
+	 		dataType : 'json',
 	    data:dataToSend,
 	    contentType:'application/json',
 	    success : function(response) {
-			alert("El cliente se ha actualizado correctamente");
+			//alert("El cliente se ha actualizado correctamente");
+
 	    },
 	    error : function(xhr, status) {
 	       //alert('Ha ocurrido un problema al actualizar el cliente');
@@ -125,28 +123,30 @@ function updateClient(){
 	    	getClients();
 	    }
 	});
+
 }
 
-function deleteClient(idClient){
+function deleteClient(idCliente){
 	let data={
-		id:idClient
+		id:idCliente
 	};
 	let dataToSend=JSON.stringify(data);
-	
+	//console.log(dataToSend);
 	$.ajax({
-	    url : ' https://g3efc9e5e9cd9ec-oiw2e4sz708myfhs.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+	    url : Global + 'Client/' + data.id,
 	    type : 'DELETE',
-	 //   dataType : 'json',
+	    dataType : 'json',
 	    data:dataToSend,
 	    contentType:'application/json',
 	    success : function(response) {
-			console.log("El cliente se ha borrado correctamente");
+				//console.log("El cliente se ha borrado correctamente");
 	    },
 	    error : function(xhr, status) {
-	       alert('Ha ocurrido un problema al borrar el cliente');
+	       //alert('Ha ocurrido un priblema al borrar el cliente');
 	    },
 	    complete: function(){
 	    	getClients();
 	    }
 	});
+
 }
